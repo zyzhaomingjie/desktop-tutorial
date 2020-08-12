@@ -4,6 +4,7 @@ Created on Tue Aug 11 22:34:30 2020
 
 @author: ZMJ
 """
+hfdjkshfkds 
 import matplotlib.pyplot as plt 
 import pandas as pd
 from sklearn.cluster import KMeans
