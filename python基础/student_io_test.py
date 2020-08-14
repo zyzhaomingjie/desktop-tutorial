@@ -9,9 +9,9 @@ def convert_file_format(input_file_path: str, output_file_path: str,
     # 指定列名
     fieldnames = ("name", "age", "gender", "class", "score")
  
-    reader = csv.DictReader( csvfile, fieldnames)
+    reader = csv.DictReader(csvfile, fieldnames)
     # 指定ensure_ascii=False 为了不让中文显示为ascii字符码
-    out = json.dumps( [ row for row in reader ] ,ensure_ascii=False)
+    out = json.dumps( [ row for row in reader ], ensure_ascii=False)
  
     jsonfile.write(out)
 
