@@ -14,13 +14,7 @@ def recur(a):
        
 """输出数组"""    
 def fib(n):
+    fibs = []
     for i in range(1, n + 1):
-        if i == 1:
-            if n == 1:
-                print('[' + str(i) + ']')
-            else:
-                print('[' + str(i), end = '')
-        elif i == n and n > 1:
-            print(',' + str(recur(i)) + ']')
-        else:
-            print(',' + str(recur(i)), end = '')
+        fibs.append(recur(i))
+    return fibs
