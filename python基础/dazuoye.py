@@ -56,7 +56,10 @@ def get_movie_kinds():
     with open('movies.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
          for row in reader:
-             movie_kind.add(row[2])
+             lists = row[2].split('|', )
+             for list in lists:
+                 if list != '(no genres listed)':
+                     movie_kind.add(list)
     print(len(movie_kind))
     
 get_movie_kinds()
