@@ -6,18 +6,18 @@ Created on Fri Aug 14 15:42:15 2020
 """
 
 import csv
-
+from itertools import islice
 
 ###一共有多少不同的用户
 def get_users():
     user=set()
     with open('tags.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              user.add(row[0])
     with open('ratings.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              user.add(row[0])
     print(len(user))
 
@@ -28,26 +28,26 @@ def get_movies():
     movie=set()
     with open('tags.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              movie.add(row[1])
     with open('ratings.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              movie.add(row[1])
     with open('movies.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              movie.add(row[0])
     with open('links.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              movie.add(row[0])
-    with open('genome-scores.csv', 'r',encoding='utf-8') as f:
+    with open('scores.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              movie.add(row[0])
     print(len(movie))
-    
+    return len(movie)
 get_movies()
 
 ###一共有多少不同的电影种类
@@ -55,7 +55,7 @@ def get_movie_kinds():
     movie_kind=set()
     with open('movies.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              lists = row[2].split('|', )
              for list in lists:
                  if list != '(no genres listed)':
@@ -69,11 +69,13 @@ def get_movie_no_links():
     movie_no_link=set()
     with open('links.csv', 'r',encoding='utf-8') as f:
          reader = csv.reader(f)        
-         for row in reader:
+         for row in islice(reader, 1, None):
              movie_no_link.add(row[0])
-    print(len(movie_no_link))
-    
-get_movie_no_links()
+    return len(movie_no_link)
+
+a = get_movies()
+b = get_movie_no_links()
+result = a-b
 
 ###2018年一共有多少人进行过电影评分
 import pandas as pd
