@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn import datasets
 from sklearn.cluster import KMeans
-import  seaborn as sns 
+import seaborn as sns 
 
 df=pd.DataFrame(datasets.load_iris()['data'],columns=datasets.load_iris()['feature_names']) 
 
@@ -15,4 +15,4 @@ kmeans.cluster_centers_###类均值
 
 y = kmeans.predict(X)
 
-sns.scatterplot(x=X[:,0],y=X[:,2],hue=y)
+sns.scatterplot(X[:,0],X[:,2],hue=y)
